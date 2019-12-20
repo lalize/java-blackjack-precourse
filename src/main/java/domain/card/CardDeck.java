@@ -1,5 +1,6 @@
 package domain.card;
 
+import java.util.Collections;
 import java.util.Stack;
 
 public class CardDeck {
@@ -7,5 +8,9 @@ public class CardDeck {
 
 	public CardDeck() {
 		cards.addAll(CardFactory.create());
+	}
+
+	public void shuffle() {
+		Collections.shuffle(cards);
 	}
 }
