@@ -10,12 +10,12 @@ import java.util.List;
  */
 public class Player {
     private final Name name;
-    private final double bettingMoney;
+    private final BettingMoney bettingMoney;
     private final List<Card> cards = new ArrayList<>();
 
     public Player(String name, double bettingMoney) {
         this.name = new Name(name);
-        this.bettingMoney = bettingMoney;
+        this.bettingMoney = new BettingMoney(bettingMoney);
     }
 
     public void addCard(Card card) {
