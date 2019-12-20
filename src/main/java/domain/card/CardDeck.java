@@ -13,4 +13,8 @@ public class CardDeck {
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
+
+	public Card pop() {
+		return cards.pop();
+	}
 }
