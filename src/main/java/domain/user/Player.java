@@ -37,7 +37,7 @@ public class Player {
     }
 
     public int getScore() {
-        return cards.getScore();
+        return cards.getScore().get();
     }
 
     public boolean isBlackjack() {

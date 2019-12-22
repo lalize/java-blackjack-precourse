@@ -2,6 +2,8 @@ package domain.card;
 
 import java.util.Objects;
 
+import domain.user.Score;
+
 /**
  * 카드 한장을 의미하는 객체
  */
@@ -13,10 +15,6 @@ public class Card {
 	public Card(Symbol symbol, Type type) {
 		this.symbol = symbol;
 		this.type = type;
-	}
-
-	public int getScore() {
-		return symbol.getScore();
 	}
 
 	public String getName() {
@@ -49,5 +47,9 @@ public class Card {
 				"symbol=" + symbol +
 				", type=" + type +
 				'}';
+	}
+
+	public Score calculate(Score score) {
+		return score.plus(symbol.getScore());
 	}
 }

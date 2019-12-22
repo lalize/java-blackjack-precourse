@@ -6,8 +6,6 @@ import java.util.List;
 import domain.card.Card;
 
 public class Cards {
-	private static final int ACE_BONUS = 10;
-	private static final int BLACKJACK_SCORE = 21;
 	private static final int BLACKJACK_SIZE = 2;
 
 	private final List<Card> cards;
@@ -24,28 +22,34 @@ public class Cards {
 		cards.add(card);
 	}
 
-	public int getScore() {
-		int score = cards.stream().mapToInt(Card::getScore).sum();
-		boolean hasAce = cards.stream().anyMatch(Card::isAce);
-		if (hasAce && score + ACE_BONUS <= BLACKJACK_SCORE) {
-			score += ACE_BONUS;
+	public Score getScore() {
+		Score score = Score.ZERO;
+		for (Card card : cards) {
+			score = card.calculate(score);
+		}
+		if (hasAce()) {
+			return score.plusAceBonusIfNotBust();
 		}
 		return score;
 	}
 
+	private boolean hasAce() {
+		return cards.stream().anyMatch(Card::isAce);
+	}
+
 	public boolean isBlackjack() {
-		return cards.size() == BLACKJACK_SIZE && getScore() == BLACKJACK_SCORE;
+		return cards.size() == BLACKJACK_SIZE && getScore().isBlackjack();
 	}
 
 	public boolean isNotBlackjack() {
-		return cards.size() != BLACKJACK_SIZE || getScore() != BLACKJACK_SCORE;
+		return cards.size() != BLACKJACK_SIZE || getScore().isNotBlackjack();
 	}
 
 	public boolean isBust() {
-		return getScore() > BLACKJACK_SCORE;
+		return getScore().isBust();
 	}
 
 	public boolean isNotBust() {
-		return getScore() <= BLACKJACK_SCORE;
+		return getScore().isNotBust();
 	}
 }
