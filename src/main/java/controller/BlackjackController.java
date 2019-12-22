@@ -42,8 +42,7 @@ public class BlackjackController {
 	}
 
 	private void addMoreCardPlayer(Player player) {
-		while (WhetherAddCard.of(InputView.getWhetherAddCard(player.getName())).isYes()
-				&& player.isNotBust()) {
+		while (player.isNotBust() && WhetherAddCard.of(InputView.getWhetherAddCard(player.getName())).isYes()) {
 			dealer.giveCard(cardDeck, player);
 			OutputView.printCards(player.getName(), player.getCards());
 		}
@@ -60,5 +59,11 @@ public class BlackjackController {
 			dealer.giveCard(cardDeck, dealer);
 			OutputView.printAddCardDealer();
 		}
+	}
+
+	public void run() {
+		firstGiveTwoCard();
+		addMoreCardPlayers();
+		addMoreCardDealer();
 	}
 }
