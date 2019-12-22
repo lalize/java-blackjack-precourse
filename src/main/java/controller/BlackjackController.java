@@ -2,13 +2,18 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import domain.card.CardDeck;
 import domain.user.Dealer;
 import domain.user.Player;
 import view.InputView;
+import view.OutputView;
 
 public class BlackjackController {
+	private static final int ONE = 1;
+	private static final int TWO = 2;
+
 	private final CardDeck cardDeck;
 	private final Dealer dealer;
 	private final List<Player> players;
@@ -27,5 +32,11 @@ public class BlackjackController {
 			players.add(player);
 		}
 		return players;
+	}
+
+	private void firstGiveTwoCard() {
+		IntStream.of(ONE, TWO).forEach(i -> dealer.giveCard(cardDeck, dealer));
+		IntStream.of(ONE, TWO).forEach(i -> dealer.giveCard(cardDeck, players));
+		OutputView.printFirstGiveTwoCard(dealer, players);
 	}
 }
