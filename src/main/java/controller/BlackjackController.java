@@ -36,8 +36,10 @@ public class BlackjackController {
 	}
 
 	private void firstGiveTwoCard() {
-		IntStream.of(ONE, TWO).forEach(i -> dealer.giveCard(cardDeck, dealer));
-		IntStream.of(ONE, TWO).forEach(i -> dealer.giveCard(cardDeck, players));
+		IntStream.of(ONE, TWO).forEach(i -> {
+			dealer.giveCard(cardDeck, dealer);
+			dealer.giveCard(cardDeck, players);
+		});
 		OutputView.printFirstGiveTwoCard(dealer, players);
 	}
 
