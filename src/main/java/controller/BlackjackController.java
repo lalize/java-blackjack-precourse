@@ -61,9 +61,14 @@ public class BlackjackController {
 		}
 	}
 
+	private void playerResults() {
+		OutputView.printResults(dealer, players);
+	}
+
 	public void run() {
 		firstGiveTwoCard();
 		addMoreCardPlayers();
 		addMoreCardDealer();
+		playerResults();
 	}
 }
