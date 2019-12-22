@@ -15,12 +15,12 @@ public class OutputView {
 	public static void printFirstGiveTwoCard(Dealer dealer, List<Player> players) {
 		System.out.printf(FIRST_GIVE_TWO_CARD_FORMAT, dealer.getName(),
 				players.stream().map(Player::getName).collect(Collectors.joining(DELIMITER)));
-		for (Player player : players) {
-			printCards(player.getName(), player.getCards());
-		}
 		final int FACE_UP_CARD_INDEX = 0;
 		final int FACE_UP_CARD_COUNT = 1;
 		printCards(dealer.getName(), dealer.getCards().subList(FACE_UP_CARD_INDEX, FACE_UP_CARD_COUNT));
+		for (Player player : players) {
+			printCards(player.getName(), player.getCards());
+		}
 	}
 
 	public static void printAddCardDealer() {
