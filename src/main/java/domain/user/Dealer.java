@@ -9,7 +9,7 @@ import domain.card.CardDeck;
  */
 public class Dealer extends Player {
     private static final String NAME = "딜러";
-    private static final double BETTING_MONEY = 0;
+    private static final double BETTING_MONEY = 1;
 
     public Dealer() {
         super(NAME, BETTING_MONEY);
