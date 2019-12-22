@@ -3,6 +3,7 @@ package domain.user;
 import domain.card.Card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -49,5 +50,9 @@ public class Player {
 
     public boolean isBust() {
         return getScore() > BLACKJACK_SCORE;
+    }
+
+    public boolean isNotBust() {
+        return getScore() <= BLACKJACK_SCORE;
     }
 }
