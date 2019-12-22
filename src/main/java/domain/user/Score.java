@@ -37,8 +37,9 @@ public class Score {
 	}
 
 	public Score plusAceBonusIfNotBust() {
-		if (isNotBust()) {
-			return plus(ACE_BONUS);
+		Score bonus = plus(ACE_BONUS);
+		if (bonus.isNotBust()) {
+			return bonus;
 		}
 		return this;
 	}
