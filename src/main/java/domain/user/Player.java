@@ -46,4 +46,8 @@ public class Player {
     public boolean isBlackjack() {
         return cards.size() == BLACKJACK_SIZE && getScore() == BLACKJACK_SCORE;
     }
+
+    public boolean isBust() {
+        return getScore() > BLACKJACK_SCORE;
+    }
 }
