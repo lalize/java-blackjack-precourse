@@ -27,4 +27,12 @@ public class Dealer extends Player {
     public boolean mustAddCard() {
         return getScore() <= MUST_ADD_CARD_SCORE;
     }
+
+    public Profit getProfit(List<Player> players) {
+        Profit profit = Profit.ZERO;
+        for (Player player : players) {
+            profit = profit.calculate(player.getProfit(this));
+        }
+        return profit;
+    }
 }

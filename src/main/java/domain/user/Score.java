@@ -42,4 +42,8 @@ public class Score {
 		}
 		return this;
 	}
+
+	public boolean isGreaterThan(Score score) {
+		return this.score > score.score;
+	}
 }

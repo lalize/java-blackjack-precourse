@@ -40,6 +40,23 @@ public class Player {
         return cards.getScore().get();
     }
 
+    public Profit getProfit(Player dealer) {
+        Profit profit = new Profit(getBettingMoney());
+        if (dealer.isBlackjack() && isNotBlackjack()) {
+            return profit.ifLose();
+        }
+        if (dealer.isNotBlackjack() && isBlackjack()) {
+            return profit.ifBlackjack();
+        }
+        if (dealer.isWin(this)) {
+            return profit.ifLose();
+        }
+        if (isWin(dealer)) {
+            return profit;
+        }
+        return profit.ZERO;
+    }
+
     public boolean isBlackjack() {
         return cards.isBlackjack();
     }
@@ -54,5 +71,9 @@ public class Player {
 
     public boolean isNotBust() {
         return cards.isNotBust();
+    }
+
+    public boolean isWin(Player dealer) {
+        return cards.isWin(dealer.cards);
     }
 }

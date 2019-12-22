@@ -52,4 +52,8 @@ public class Cards {
 	public boolean isNotBust() {
 		return getScore().isNotBust();
 	}
+
+	public boolean isWin(Cards cards) {
+		return isNotBust() && (cards.isBust() || getScore().isGreaterThan(cards.getScore()));
+	}
 }
