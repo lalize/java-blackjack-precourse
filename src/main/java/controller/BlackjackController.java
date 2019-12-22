@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import domain.card.CardDeck;
 import domain.user.Dealer;
 import domain.user.Player;
+import domain.user.WhetherAddCard;
 import view.InputView;
 import view.OutputView;
 
@@ -38,5 +39,19 @@ public class BlackjackController {
 		IntStream.of(ONE, TWO).forEach(i -> dealer.giveCard(cardDeck, dealer));
 		IntStream.of(ONE, TWO).forEach(i -> dealer.giveCard(cardDeck, players));
 		OutputView.printFirstGiveTwoCard(dealer, players);
+	}
+
+	private void addMoreCardPlayer(Player player) {
+		while (WhetherAddCard.of(InputView.getWhetherAddCard(player.getName())).isYes()
+				&& player.isNotBust()) {
+			dealer.giveCard(cardDeck, player);
+			OutputView.printCards(player.getName(), player.getCards());
+		}
+	}
+
+	private void addMoreCardPlayers() {
+		for (Player player : players) {
+			addMoreCardPlayer(player);
+		}
 	}
 }
