@@ -54,4 +54,11 @@ public class BlackjackController {
 			addMoreCardPlayer(player);
 		}
 	}
+
+	private void addMoreCardDealer() {
+		if (dealer.mustAddCard()) {
+			dealer.giveCard(cardDeck, dealer);
+			OutputView.printAddCardDealer();
+		}
+	}
 }

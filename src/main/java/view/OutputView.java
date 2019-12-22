@@ -23,6 +23,10 @@ public class OutputView {
 		printCards(dealer.getName(), dealer.getCards().subList(FACE_UP_CARD_INDEX, FACE_UP_CARD_COUNT));
 	}
 
+	public static void printAddCardDealer() {
+		System.out.println("딜러는 16이하라 한 장의 카드를 더 받았습니다.");
+	}
+
 	public static void printCards(String name, List<Card> cards) {
 		System.out.printf(CARDS_FORMAT, name, cards.stream().map(Card::getName).collect(Collectors.joining(DELIMITER)));
 	}

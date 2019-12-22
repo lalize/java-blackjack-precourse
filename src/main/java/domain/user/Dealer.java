@@ -10,6 +10,7 @@ import domain.card.CardDeck;
 public class Dealer extends Player {
     private static final String NAME = "딜러";
     private static final double BETTING_MONEY = 1;
+    private static final int MUST_ADD_CARD_SCORE = 16;
 
     public Dealer() {
         super(NAME, BETTING_MONEY);
@@ -21,5 +22,9 @@ public class Dealer extends Player {
 
     public void giveCard(CardDeck cardDeck, List<Player> players) {
         players.forEach(player -> giveCard(cardDeck, player));
+    }
+
+    public boolean mustAddCard() {
+        return getScore() <= MUST_ADD_CARD_SCORE;
     }
 }
