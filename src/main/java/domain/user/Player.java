@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Player {
     private static final int ACE_BONUS = 10;
-    private static final int SAFE_SCORE = 21;
+    private static final int BLACKJACK_SCORE = 21;
     private static final int BLACKJACK_SIZE = 2;
 
     private final Name name;
@@ -37,13 +37,13 @@ public class Player {
     public int getScore() {
         int score = cards.stream().mapToInt(Card::getScore).sum();
         boolean hasAce = cards.stream().anyMatch(Card::isAce);
-        if (hasAce && score + ACE_BONUS <= SAFE_SCORE) {
+        if (hasAce && score + ACE_BONUS <= BLACKJACK_SCORE) {
             score += ACE_BONUS;
         }
         return score;
     }
 
     public boolean isBlackjack() {
-        return cards.size() == BLACKJACK_SIZE && getScore() == SAFE_SCORE;
+        return cards.size() == BLACKJACK_SIZE && getScore() == BLACKJACK_SCORE;
     }
 }
