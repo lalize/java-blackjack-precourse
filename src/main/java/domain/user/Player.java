@@ -10,6 +10,8 @@ import java.util.List;
  * 게임 참여자를 의미하는 객체
  */
 public class Player {
+    private static final int BLACKJACK_SCORE = 21;
+
     private final Name name;
     private final BettingMoney bettingMoney;
     private final Cards cards;
@@ -75,5 +77,9 @@ public class Player {
 
     public boolean isWin(Player dealer) {
         return cards.isWin(dealer.cards);
+    }
+
+    public boolean canAddCard() {
+        return getScore() < BLACKJACK_SCORE;
     }
 }

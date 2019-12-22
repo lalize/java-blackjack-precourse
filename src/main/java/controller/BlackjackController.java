@@ -44,7 +44,7 @@ public class BlackjackController {
 	}
 
 	private void addMoreCardPlayer(Player player) {
-		while (player.isNotBust() && WhetherAddCard.of(InputView.getWhetherAddCard(player.getName())).isYes()) {
+		while (player.canAddCard() && WhetherAddCard.of(InputView.getWhetherAddCard(player.getName())).isYes()) {
 			dealer.giveCard(cardDeck, player);
 			OutputView.printCards(player.getName(), player.getCards());
 		}
