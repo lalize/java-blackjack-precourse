@@ -12,6 +12,7 @@ public class OutputView {
 	private static final String FIRST_GIVE_TWO_CARD_FORMAT = "%s와 %s에게 두 장의 카드를 나누었습니다.\n";
 	private static final String CARDS_FORMAT = "%s 카드 : %s\n";
 	private static final String CARD_RESULT_FORMAT = "%s 카드 : %s - 결과: %d\n";
+	private static final String PROFIT_FORMAT = "%s : %+d\n";
 
 	public static void printFirstGiveTwoCard(Dealer dealer, List<Player> players) {
 		System.out.printf(FIRST_GIVE_TWO_CARD_FORMAT, dealer.getName(),
@@ -42,6 +43,14 @@ public class OutputView {
 		printResult(dealer);
 		for (Player player : players) {
 			printResult(player);
+		}
+	}
+
+	public static void printProfits(Dealer dealer, List<Player> players) {
+		System.out.println("## 최종 수익");
+		System.out.printf(PROFIT_FORMAT, dealer.getName(), (int)dealer.getProfit(players).get());
+		for (Player player : players) {
+			System.out.printf(PROFIT_FORMAT, player.getName(), (int)player.getProfit(dealer).get());
 		}
 	}
 }

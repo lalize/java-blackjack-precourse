@@ -65,12 +65,18 @@ public class BlackjackController {
 		OutputView.printResults(dealer, players);
 	}
 
+	private void finalProfit() {
+		OutputView.printProfits(dealer, players);
+	}
+
 	public void run() {
+		cardDeck.shuffle();
 		firstGiveTwoCard();
 		if (dealer.isNotBlackjack()) {
 			addMoreCardPlayers();
 			addMoreCardDealer();
 		}
 		playerResults();
+		finalProfit();
 	}
 }
