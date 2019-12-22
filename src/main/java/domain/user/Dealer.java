@@ -1,5 +1,7 @@
 package domain.user;
 
+import java.util.List;
+
 import domain.card.CardDeck;
 
 /**
@@ -15,5 +17,9 @@ public class Dealer extends Player {
 
     public void giveCard(CardDeck cardDeck, Player player) {
         player.addCard(cardDeck.pop());
+    }
+
+    public void giveCard(CardDeck cardDeck, List<Player> players) {
+        players.forEach(player -> giveCard(cardDeck, player));
     }
 }
