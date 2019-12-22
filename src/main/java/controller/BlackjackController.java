@@ -67,8 +67,10 @@ public class BlackjackController {
 
 	public void run() {
 		firstGiveTwoCard();
-		addMoreCardPlayers();
-		addMoreCardDealer();
+		if (dealer.isNotBlackjack()) {
+			addMoreCardPlayers();
+			addMoreCardDealer();
+		}
 		playerResults();
 	}
 }
