@@ -35,6 +35,10 @@ public class Player {
         return bettingMoney.get();
     }
 
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(cards);
+    }
+
     public int getScore() {
         int score = cards.stream().mapToInt(Card::getScore).sum();
         boolean hasAce = cards.stream().anyMatch(Card::isAce);
