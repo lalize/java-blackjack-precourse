@@ -11,6 +11,7 @@ import java.util.List;
 public class Player {
     private static final int ACE_BONUS = 10;
     private static final int SAFE_SCORE = 21;
+    private static final int BLACKJACK_SIZE = 2;
 
     private final Name name;
     private final BettingMoney bettingMoney;
@@ -40,5 +41,9 @@ public class Player {
             score += ACE_BONUS;
         }
         return score;
+    }
+
+    public boolean isBlackjack() {
+        return cards.size() == BLACKJACK_SIZE && getScore() == SAFE_SCORE;
     }
 }
